@@ -6,130 +6,130 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>خطة النادي الصيفي</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-/* VOICE  calm working calendar for the club team
-   IDEA   a wall/Apple year calendar where every day is tinted by the period it belongs to
-   PICTURE twelve-plus mini months; a period page shows only its months, tinted by phase
-   COLOUR light ground, soft ink; one colour per period taken from the club's rainbow line
-   TYPE   IBM Plex Sans Arabic 300/400/500, never heavy
-   LAYOUT title + legend on top, month grid fills the page; period page: header, phase chips, its months, phase cards */
-:root{color-scheme:light dark;--bg:light-dark(#f7f7f5,#131316);--card:light-dark(#ffffff,#1d1d22);--soft:light-dark(#efefec,#25252b);--ink:light-dark(#1f1f22,#ececf0);--mute:light-dark(#6b6b72,#a3a3ad);--line:light-dark(#e3e3df,#33333a);--pur:light-dark(#7444f0,#a284ff)}
-:root[data-theme=light]{color-scheme:light}
-:root[data-theme=dark]{color-scheme:dark}
+/* VOICE  calm working plan, dark like the club's deck
+   IDEA   a wall year-calendar on black, each period in its own colour from the club palette
+   PICTURE the month grid tinted by period; a period page shows its months tinted by phase
+   COLOUR near-black ground, light ink, six period colours: green, yellow, orange, red, purple, blue
+   TYPE   Alexandria 300/400/500
+   LAYOUT header with dates; intro panel with tab buttons and one table at a time; calendar; period pages */
+:root{color-scheme:dark;--bg:#0e0e10;--card:#18181c;--card2:#212127;--ink:#f1f1f3;--mute:#9a9aa5;--line:#2c2c33;--acc:#8b5cf6}
 *{box-sizing:border-box;min-width:0}
 html,body{margin:0}
-body{background:var(--bg);color:var(--ink);font:400 16px/1.7 "IBM Plex Sans Arabic",Tahoma,sans-serif;overflow-x:clip}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.75 Alexandria,Tahoma,sans-serif;overflow-x:clip}
 .wrap{max-width:1240px;margin-inline:auto;padding:clamp(20px,3.5vw,44px) max(4vw,16px)}
-.rain{height:4px;width:110px;border-radius:4px;background:linear-gradient(to left,#7444f0,#e0453c,#f39a25,#36b26a,#2f80d1)}
-h1{font-weight:500;font-size:clamp(26px,3.6vw,38px);line-height:1.2;margin:14px 0 6px;letter-spacing:-.01em;text-wrap:balance}
-h2{font-weight:500;font-size:clamp(22px,3vw,30px);line-height:1.25;margin:0}
+.rain{height:4px;width:120px;border-radius:4px;background:linear-gradient(to left,#4a97d8,#7b4cf5,#e0503f,#e8913c,#d8c23f,#5bb97a)}
+h1{font-weight:500;font-size:clamp(28px,4vw,44px);line-height:1.2;margin:14px 0 6px;text-wrap:balance}
+h2{font-weight:500;font-size:clamp(21px,2.6vw,28px);line-height:1.3;margin:0}
 h3{font-weight:500;font-size:17px;margin:0 0 4px}
 p{margin:0}
 .mute{color:var(--mute)}
-.top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:16px 32px;margin-bottom:22px}
-.lnk{color:var(--pur);text-decoration:none;border-bottom:1px solid currentColor}
-.legend{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 26px}
-.chip{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:15px;border-radius:999px;padding:8px 14px 8px 16px;min-height:44px;cursor:pointer;text-decoration:none}
-.chip:hover{border-color:var(--c)}
-.chip i{width:14px;height:14px;border-radius:50%;background:var(--c);flex:0 0 auto}
+.dates{font-size:clamp(17px,2vw,20px);color:var(--mute);letter-spacing:.01em}
+.dates b{color:var(--ink);font-weight:400}
+.sec{margin-top:clamp(34px,5vw,56px)}
+.sec-h{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.sec-h i{width:10px;height:10px;border-radius:3px;background:var(--acc)}
+.panel{background:var(--card);border-radius:22px;padding:clamp(16px,2.6vw,26px)}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.tab{border:1px solid var(--line);background:transparent;color:var(--mute);font:inherit;font-size:15px;border-radius:12px;padding:8px 16px;min-height:44px;cursor:pointer}
+.tab:hover{color:var(--ink);border-color:#3d3d46}
+.tab[aria-selected=true]{background:var(--ink);color:#111;border-color:var(--ink)}
+.lead{max-width:80ch;margin-bottom:16px}
+.lead b{font-weight:500}
+.kv{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.kv th,.kv td{text-align:right;padding:13px 16px;border-bottom:1px solid var(--line);vertical-align:top;font-weight:400}
+.kv tr:last-child th,.kv tr:last-child td{border-bottom:0}
+.kv th{width:170px;color:var(--mute);background:var(--card2);font-size:15px}
+.kv thead th{color:var(--mute);font-size:13px;background:var(--card2)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips span{background:var(--card2);border:1px solid var(--line);border-radius:999px;padding:2px 12px;font-size:14px}
+.dot{display:inline-block;width:12px;height:12px;border-radius:4px;margin-inline-end:8px;vertical-align:-1px}
+.legend{display:flex;flex-wrap:wrap;gap:8px 22px;margin:0 0 24px}
+.chip{display:inline-flex;align-items:center;gap:10px;border:0;background:transparent;color:var(--ink);font:inherit;font-size:16px;padding:6px 2px;min-height:44px;cursor:pointer;text-decoration:none}
+.chip i{width:18px;height:18px;border-radius:5px;background:var(--c);flex:0 0 auto}
 .chip small{color:var(--mute);font-size:13px}
-.chip[aria-pressed=true]{background:var(--c);border-color:var(--c);color:var(--on)}
-.chip[aria-pressed=true] small{color:inherit;opacity:.85}
-.chip[aria-pressed=true] i{background:var(--on)}
-.months{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,230px),1fr));gap:22px 26px}
-.mon h3{font-size:16px;margin:0 0 8px;color:var(--ink)}
-.mon h3 span{color:var(--mute);font-weight:400;font-size:14px}
+.chip:hover span{text-decoration:underline;text-underline-offset:6px;text-decoration-color:var(--c)}
+.chip[aria-pressed=true] span{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:6px;text-decoration-color:var(--c)}
+.months{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,230px),1fr));gap:24px 28px}
+.mon h3{font-size:16px;margin:0 0 8px}
+.mon h3 span{color:var(--mute);font-weight:300;font-size:14px}
 .dg{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:3px}
 .dh{font-size:12px;color:var(--mute);text-align:center}
-.d{aspect-ratio:1;border:0;border-radius:8px;font:inherit;font-size:13px;display:grid;place-items:center;background:transparent;color:var(--mute);padding:0;position:relative}
-button.d{cursor:pointer;background:color-mix(in srgb,var(--c) 22%,var(--card));color:var(--ink)}
-button.d:hover{background:color-mix(in srgb,var(--c) 45%,var(--card))}
+.d{aspect-ratio:1;border:0;border-radius:8px;font:inherit;font-size:13px;display:grid;place-items:center;background:transparent;color:#55555e;padding:0;position:relative}
+button.d{cursor:pointer;background:color-mix(in srgb,var(--c) 42%,var(--card));color:var(--ink)}
+button.d:hover{background:color-mix(in srgb,var(--c) 70%,var(--card))}
 button.d.full{background:var(--c);color:var(--on)}
 .d.ms{outline:2px solid var(--ink);outline-offset:1px}
 .d.now::after{content:"";position:absolute;bottom:3px;width:4px;height:4px;border-radius:50%;background:currentColor}
-.d.dim{opacity:.25}
-.d:focus-visible,.chip:focus-visible,.back:focus-visible{outline:2px solid var(--pur);outline-offset:2px}
+.d.dim{opacity:.2}
+.d:focus-visible,.chip:focus-visible,.back:focus-visible,.tab:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
 .keys{display:flex;flex-wrap:wrap;gap:6px 20px;margin-top:26px;font-size:14px;color:var(--mute)}
-.keys b{font-weight:500;color:var(--ink)}
-.ring{display:inline-block;width:14px;height:14px;border-radius:4px;box-shadow:inset 0 0 0 2px var(--ink);vertical-align:-2px;margin-inline-end:6px}
-.back{border:0;background:var(--soft);color:var(--ink);font:inherit;font-size:15px;border-radius:999px;padding:8px 16px;min-height:44px;cursor:pointer}
-.ph-head{border-radius:22px;padding:22px clamp(18px,3vw,30px);background:color-mix(in srgb,var(--c) 14%,var(--card));margin:16px 0 22px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 22px;align-items:center}
+.keys b{font-weight:400;color:var(--ink)}
+.ring{display:inline-block;width:14px;height:14px;border-radius:4px;outline:2px solid var(--ink);vertical-align:-2px;margin-inline-end:8px}
+.back{border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:15px;border-radius:12px;padding:8px 16px;min-height:44px;cursor:pointer}
+.ph-head{border-radius:22px;padding:22px clamp(18px,3vw,30px);background:color-mix(in srgb,var(--c) 16%,var(--card));margin:16px 0 22px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 22px;align-items:center;border-top:4px solid var(--c)}
 .ph-head .n{font-size:clamp(46px,7vw,72px);line-height:1;color:var(--c);font-weight:300;grid-row:span 3}
 .ph-head .meta{color:var(--mute);font-size:15px}
 .ph-head .goal{grid-column:1/-1;margin-top:10px;font-size:17px;max-width:75ch}
-.cal2{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,230px),1fr));gap:22px 26px;margin:6px 0 30px}
+.phl{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.phc{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:15px;border-radius:12px;padding:8px 14px;min-height:44px;cursor:pointer}
+.phc i{width:14px;height:14px;border-radius:4px;background:var(--c)}
+.phc small{color:var(--mute);font-size:13px}
+.phc[aria-pressed=true]{border-color:var(--c);background:color-mix(in srgb,var(--c) 20%,var(--card))}
+.cal2{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,230px),1fr));gap:22px 26px;margin:0 0 30px}
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:14px}
-.card{background:var(--card);border-radius:18px;padding:18px 20px;border-top:5px solid var(--c);scroll-margin-top:16px}
+.card{background:var(--card);border-radius:18px;padding:18px 20px;border-top:4px solid var(--c);scroll-margin-top:16px}
 .card.hi{box-shadow:0 0 0 2px var(--c)}
 .card .dt{color:var(--mute);font-size:14px;white-space:nowrap}
 .card dl{margin:8px 0 0}
 .card dt{font-size:13px;color:var(--mute);margin-top:10px}
 .card dd{margin:2px 0 0}
-.msg{background:color-mix(in srgb,var(--c) 12%,var(--card));border-radius:10px;padding:6px 12px}
+.msg{background:color-mix(in srgb,var(--c) 16%,var(--card2));border-radius:10px;padding:6px 12px}
 .ax{list-style:none;padding:0;margin:4px 0 0}
-.ax li{padding:5px 0;border-top:1px solid var(--line)}
+.ax li{padding:6px 0;border-top:1px solid var(--line)}
 .ax li:first-child{border-top:0}
 .dots{padding-inline-start:18px;margin:6px 0 0}
 .todo{list-style:none;padding:0;margin:6px 0 0}
-.todo li{display:flex;gap:10px;padding:6px 0;border-top:1px solid var(--line)}
+.todo li{display:flex;gap:10px;padding:7px 0;border-top:1px solid var(--line)}
 .todo li:first-child{border-top:0}
-.todo li::before{content:"";flex:0 0 16px;height:16px;margin-top:6px;border:2px solid var(--pur);border-radius:4px}
-.tbd{color:var(--mute);border:1px dashed var(--line);border-radius:6px;padding:0 6px;font-size:13px;font-style:normal;white-space:nowrap}
-.sec{margin-top:38px}
-.sec h2{margin-bottom:14px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:12px}
-.box{background:var(--card);border-radius:18px;padding:18px 20px}
+.todo li::before{content:"";flex:0 0 16px;height:16px;margin-top:6px;border:2px solid var(--acc);border-radius:4px}
+.tbd{color:var(--mute);border:1px dashed #44444d;border-radius:6px;padding:0 6px;font-size:13px;font-style:normal;white-space:nowrap}
 .scroll{overflow-x:auto}
-table{width:100%;border-collapse:collapse;font-size:15px}
-th,td{text-align:right;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top;font-weight:400}
-th{color:var(--mute);font-size:13px}
 [hidden]{display:none !important}
-@media(max-width:600px){.ph-head{grid-template-columns:minmax(0,1fr)}.ph-head .n{grid-row:auto}.chip{font-size:14px}}
+@media(max-width:600px){.ph-head{grid-template-columns:minmax(0,1fr)}.ph-head .n{grid-row:auto}.kv th{width:auto}.kv tr{display:grid}.kv th{border-bottom:0;padding-bottom:4px;background:transparent}.kv td{padding-top:0}.kv thead{display:none}}
 </style>
 </head>
 <body>
 <main class="wrap">
 
 <section id="home">
- <div class="top">
-  <div><div class="rain"></div>
-   <h1>الخطة السنوية للنادي الصيفي الشبابي</h1>
-   <p class="mute">سنة العقد من 8/11/2026 إلى 7/11/2027. اكبس على أي فترة أو أي يوم لتفتح تفاصيلها.</p></div>
-  <a class="lnk" href="#info">الأهداف والجمهور والمؤشرات</a>
+ <div class="rain"></div>
+ <h1>الخطة السنوية للنادي الصيفي الشبابي</h1>
+ <p class="dates"><b>8/11/2026</b> ← <b>7/11/2027</b></p>
+
+ <div class="sec">
+  <div class="sec-h"><i></i><h2>مقدمة الخطة</h2></div>
+  <div class="panel">
+   <div class="tabs" role="tablist" id="itabs"></div>
+   <div id="ibody"></div>
+  </div>
  </div>
- <div class="legend" id="legend"></div>
- <div class="months" id="year"></div>
- <div class="keys" id="keys"></div>
+
+ <div class="sec">
+  <div class="sec-h"><i></i><h2>تقويم السنة</h2></div>
+  <div class="legend" id="legend"></div>
+  <div class="months" id="year"></div>
+  <div class="keys" id="keys"></div>
+ </div>
 </section>
 
 <section id="period" hidden>
- <button class="back" id="back">→ رجوع للسنة</button>
+ <button class="back" id="back">→ رجوع للخطة</button>
  <div class="ph-head" id="phead"></div>
- <div class="legend" id="phlegend" style="margin-top:0"></div>
+ <div class="phl" id="phlegend"></div>
  <div class="cal2" id="pcal"></div>
  <div class="cards" id="pcards"></div>
-</section>
-
-<section id="info" hidden>
- <button class="back" id="back2">→ رجوع للسنة</button>
- <div class="sec" style="margin-top:22px"><h2>هدف السنة</h2>
-  <p style="max-width:75ch">أن يصل النادي إلى يوم الانطلاق بمقاعد ممتلئة وجمهور يثق بالجمعية، وأن يخرج من الموسم بأثر موثّق يفتح الطريق للموسم القادم، وأن يصبح منتدى القرآن (ربيع القلوب) المشروع الذي يموّل النادي: يغطي تكاليفه ومصروفاته ويحقق فائضاً يُوجَّه لتطويره.</p>
-  <div class="grid" id="goals" style="margin-top:16px"></div></div>
- <div class="sec"><h2>الجمهور المستهدف</h2><div class="grid" id="aud"></div>
-  <p class="mute" style="margin-top:12px">قاعدة الخطاب: النادي للأيتام، لكن المحتوى العام لا يُكثر من كلمة «الأيتام»؛ نقول «شبابنا» و«أبناؤنا» و«المشاركون». الكلمة تظهر أساساً في الخطاب الموجّه للشركاء والداعمين.</p></div>
- <div class="sec"><h2>منتدى القرآن · ربيع القلوب</h2>
-  <div class="grid"><div class="box"><p>المنتج الأساسي الذي يموّل النادي: دورة تحفيظ قرآن مبيت لخمسة أسابيع لـ 60 طالباً، بقيمة 800–900$ للطالب. مشروع منفصل بهوية خاصة، غير تابع لجمعية الشام للأيتام.</p></div>
-  <div class="box"><p>تحفيظ مع أحكام التلاوة والتجويد، مناهج قيمية ودورات لتحسين الذاكرة، إدارة الوقت، سباحة ورماية وركوب خيل ورياضة، وبرنامج زمني فيه عبادات ودروس. للأسر المقتدرة، الفئة 13–35 سنة.</p></div></div></div>
- <div class="sec"><h2>النادي والجمعية</h2>
-  <div class="grid"><div class="box"><h3>جمعية الشام للأيتام</h3><p class="mute">جمعية اجتماعية خيرية ليست تابعة لأي حزب أو جماعة، ترعى الأيتام السوريين. قيمها: التكامل، الإتقان، الالتزام، الرحمة، التميز.</p></div>
-  <div class="box"><h3>النادي الصيفي الشبابي · 72 طالباً</h3><p class="mute">النشابية، الغوطة. افتُتح 30/7/2026. أنشطة ثقافية وتربوية وترفيهية، مخيمات أسبوعية، ورشات ومحاضرات. الموسم الصيفي 15/6 – 15/9/2027.</p></div></div></div>
- <div class="sec"><h2>حجم العمل والمؤشرات</h2>
-  <div class="grid">
-   <div class="box"><h3>كل شهر</h3><ul class="dots"><li>25–31 منشوراً (ريلز / بوست / كاروسيل)، لا نشر قبل 1/12/2026</li><li>10–20 حملة ميتا، ميزانية نحو 100$ شهرياً</li><li>جلستا تصوير يُصوَّر فيهما محتوى الشهر كاملاً</li><li>تقارير أسبوعية وشهرية ومراجعة ربعية</li></ul></div>
-   <div class="box"><h3>المؤشرات الرئيسية</h3><div class="scroll"><table><tbody id="kpi"></tbody></table></div></div>
-  </div></div>
- <div class="sec"><h2>نقاط مفتوحة مع الإدارة</h2><div class="box"><ul class="dots" id="open"></ul></div></div>
 </section>
 
 </main>
@@ -164,6 +164,8 @@ const P=[
  {n:'المحتوى المستمر',s:'2027-10-01',e:'2027-10-20',g:'إبقاء الحسابات حيّة عبر البرامج المستمرة، مع تكثيف محتوى منتدى القرآن في هذا الشهر.',m:'الأثر لا يتوقف بانتهاء الصيف.',ax:['محور «معهم طوال العام» — البرامج المستمرة','محور «العودة إلى المدارس» — محتوى تربوي لبداية العام الدراسي','محور «ربيع القلوب» — منتدى القرآن']},
  {n:'التحضير للموسم القادم',s:'2027-10-21',e:'2027-11-07',g:'مراجعة نتائج السنة مع الإدارة، إعداد خطة الموسم الجديد، تجديد العقد قبل 7/11.',m:'نستعد لصيفٍ أكبر.',ax:['محور «ماذا تعلّمنا» — دروس الموسم الأول','محور «رأيك يصنع الموسم القادم» — استبيانات للأهالي والمشاركين','محور «موسم جديد يقترب» — تمهيد للدورة التالية'],ind:'ردود الاستبيان '+T+'، اعتماد خطة الموسم الجديد وتجديد العقد.'}]}
 ];
+const COLORS=['#5bb97a','#d8c23f','#e8913c','#e0503f','#7b4cf5','#4a97d8'];
+P.forEach((p,i)=>p.c=COLORS[i]);
 const MS={'2026-12-01':'أول منشور','2027-04-01':'الإعلان','2027-06-15':'الانطلاق','2027-07-30':'السنوية الأولى','2027-09-15':'نهاية الموسم'};
 const MN=['كانون الثاني','شباط','آذار','نيسان','أيار','حزيران','تموز','آب','أيلول','تشرين الأول','تشرين الثاني','كانون الأول'];
 const WD=['س','ح','ن','ث','ر','خ','ج'];
@@ -173,10 +175,12 @@ const dm=s=>+s.slice(8)+'/'+(+s.slice(5,7));
 const ndays=(a,b)=>Math.round((Date.parse(b)-Date.parse(a))/864e5)+1;
 const today=new Date().toISOString().slice(0,10);
 const pOf=d=>P.findIndex(p=>d>=p.s&&d<=p.e);
-// phase shades: from deep to light of the period colour
-const shade=(c,j,n)=>{const t=n<2?0:j/(n-1);const mix=Math.round(-30+t*90);return mix<0?`color-mix(in oklab,${c},black ${-mix}%)`:`color-mix(in oklab,${c},white ${mix}%)`};
-const onCol=(j,n)=>(n<2||j/(n-1)<.55)?'#fff':'#1f1f22';
-P.forEach(p=>{p.on='#fff';p.ph.forEach((x,j)=>{x.c=shade(p.c,j,p.ph.length);x.on=onCol(j,p.ph.length)})});
+const rgb=h=>[1,3,5].map(k=>parseInt(h.slice(k,k+2),16));
+const hex=a=>'#'+a.map(v=>Math.round(Math.max(0,Math.min(255,v))).toString(16).padStart(2,'0')).join('');
+const mix=(h,t,w)=>hex(rgb(h).map((v,k)=>v+(rgb(t)[k]-v)*w));
+const lum=h=>{const[r,g,b]=rgb(h).map(v=>v/255);return .2126*r+.7152*g+.0722*b};
+const onOf=h=>lum(h)>.5?'#111':'#fff';
+P.forEach(p=>{p.on=onOf(p.c);const n=p.ph.length;p.ph.forEach((x,j)=>{const t=n<2?0:j/(n-1);x.c=t<.34?mix(p.c,'#000000',.35-t):mix(p.c,'#ffffff',(t-.34)*.85);x.on=onOf(x.c)})});
 
 const month=(y,m,cell)=>{
  const first=new Date(Date.UTC(y,m-1,1)).getUTCDay();const lead=(first+1)%7;const len=new Date(Date.UTC(y,m,0)).getUTCDate();
@@ -186,56 +190,78 @@ const month=(y,m,cell)=>{
 const range=(s,e)=>{const out=[];let y=+s.slice(0,4),m=+s.slice(5,7);const ey=+e.slice(0,4),em=+e.slice(5,7);while(y<ey||(y===ey&&m<=em)){out.push([y,m]);m++;if(m>12){m=1;y++}}return out};
 const tip=(d,extra)=>`${dm(d)}/${d.slice(0,4)}${extra?' · '+extra:''}${MS[d]?' · '+MS[d]:''}`;
 
-// home
-$('legend').innerHTML=P.map((p,i)=>`<a class="chip" href="#p${i+1}" style="--c:${p.c};--on:${p.on}"><i></i>${p.n} <small>${dm(p.s)} – ${dm(p.e)}</small></a>`).join('');
+// intro tabs
+const chips=a=>`<div class="chips">${a.map(x=>`<span>${x}</span>`).join('')}</div>`;
+const kv=rows=>`<div class="scroll"><table class="kv"><tbody>${rows.map(r=>`<tr><th>${r[0]}</th><td>${r[1]}</td></tr>`).join('')}</tbody></table></div>`;
+const grid=(head,rows)=>`<div class="scroll"><table class="kv"><thead><tr>${head.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map((c,k)=>k?`<td>${c}</td>`:`<th>${c}</th>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+const I=[
+ {n:'المقدمة ونطاق الخطة',h:`<p class="lead">هذه الخطة تحوّل سنة العقد (8/11/2026 – 7/11/2027) إلى ست فترات و19 مرحلة، لكل منها هدف ورسائل ومحاور حملات ومؤشرات قياس، وتقود كل شيء نحو محطتين ثابتتين: <b>الإعلان 1/4/2027</b> و<b>الانطلاق 15/6/2027</b>.</p>`+kv([
+  ['العميل','إدارة النادي الصيفي الشبابي — الأستاذ محمود ربيع، مدير النادي'],['الجهة المالكة','جمعية الشام للأيتام — دمشق'],['الوكالة','MOZ Agency — محمد معاذ شموط'],['مدة العقد','12 شهراً: 8/11/2026 – 7/11/2027'],
+  ['المحطات الثابتة',chips(['الإعلان 1/4/2027','الانطلاق 15/6/2027','السنوية الأولى 30/7/2027'])],['المنصات',chips(['فيسبوك وإنستغرام عبر ميتا','يوتيوب','قناة الواتساب'])]])+`<p class="mute" style="margin-top:14px">تتفرع عن هذه الخطة خطة كل ثلاثة أشهر وخطة محتوى شهرية.</p>`},
+ {n:'المعطيات الأساسية',h:kv([
+  ['المكان','النشابية، الغوطة. المبنى جاهز بنسبة 70٪، ويُؤجَّر حالياً بسعر التكلفة فقط لوزارة الأوقاف ولتصفيات المسابقات القرآنية الرسمية وجهات خاصة.'],['الافتتاح','افتُتح النادي يوم 30/7/2026.'],['الموسم الصيفي الرئيسي','15/6 – 15/9/2027، أي العطلة الصيفية من انتهاء المدارس حتى بدايتها.'],['أصحاب القرار','من الوكالة معاذ شموط، ومن النادي الأستاذ محمود ربيع.'],['ميزانية الإعلانات','نحو 100$ شهرياً.'],['التصوير','جلستان شهرياً يُصوَّر فيهما محتوى الشهر المخطط كاملاً، مع إمكانية إضافة جلسات.']])},
+ {n:'الجهة المالكة',h:kv([
+  ['الجهة','جمعية الشام للأيتام'],['من هي','جمعية اجتماعية خيرية ليست تابعة لأي حزب أو جماعة، تقوم على رعاية الأيتام السوريين وتأمين احتياجاتهم.'],['رؤيتها','التعاون مع الجميع لتوفير أسمى أنواع الكفالة والرعاية لليتيم السوري.'],['هدفها البعيد','أن ترى الأيتام نخبة سوريا وبناتها.'],['قيمها',chips(['التكامل','الإتقان','الالتزام','الرحمة','التميز'])]])},
+ {n:'النادي: الأنشطة والمرافق',h:kv([
+  ['المشاركون','72 طالباً'],['أنواع الأنشطة',chips(['ثقافي','تربوي','ترفيهي'])],['المخيمات','الدورة الواحدة أسبوع يُستضاف فيها المشارك، يأخذ فيها مجموعة من القيم وكورسات بناء الشخصية وتحفيظ القرآن ضمن مناهج مُعدّة خصيصاً للنادي.'],['ورشات','ورشات تدريبية ومحاضرات.'],
+  ['المرافق البدنية',chips(['رياضة','ركوب خيل','رماية','سباحة','كرة طائرة','كرة قدم','صالة ألعاب داخلية','صالة ألعاب خارجية'])],['المرافق الدينية والخدمية',chips(['مسجد','مركز تحفيظ القرآن','أماكن إقامة','مطبخ'])]])},
+ {n:'منتدى القرآن',h:kv([
+  ['المنتج','منتدى القرآن (ربيع القلوب): المنتج الأساسي الذي يموّل النادي.'],['الدورة','تحفيظ قرآن مبيت لمدة خمسة أسابيع لـ 60 طالباً، بقيمة 800–900$ للطالب.'],['البرنامج','تحفيظ القرآن مع أحكام التلاوة والتجويد، مناهج قيمية ودورات لتحسين الذاكرة وتنشيطها بالقرآن، إدارة الوقت، غرس القيم، سباحة ورماية وركوب خيل ورياضة، وبرنامج زمني فيه عبادات ودروس — ضمن مرافق النادي.'],['الجمهور','كل أسرة مقتدرة تريد أن يتعلّم أبناؤها القرآن بهذا الشكل، للفئة 13–35 سنة.'],['الهوية','مشروع منفصل غير تابع لجمعية الشام للأيتام، بشعار «ربيع القلوب»، وتُبنى له هوية بصرية ولوغو في فترة التأسيس.'],['الهدف المالي','أن تغطي إيراداته تكاليف النادي ومصروفاته وتحقق فائضاً لتطويره.'],['بانتظار الإدارة','موعد أول دورة.']])},
+ {n:'الأهداف والجمهور',h:`<p class="lead">هدف السنة: أن يصل النادي إلى يوم الانطلاق بمقاعد ممتلئة وجمهور يثق بالجمعية، وأن يخرج من الموسم بأثر موثّق يفتح الطريق للموسم القادم، وأن يصبح منتدى القرآن المشروع الذي يموّل النادي.</p>`+grid(['الهدف','التفاصيل'],[['الثقة والحضور','بناء جمهور يعرف جمعية الشام للأيتام وقيمها قبل الإعلان.'],['الفضول ثم الاهتمام','تحويل التشويق إلى اهتمام فعلي بالإعلان.'],['ملء المقاعد','تسجيلات مسبقة قبل 14/6 مقابل 72 مقعداً، وقائمة انتظار.'],['الداعمون والشركاء','استقطاب داعمين وشركاء جدد للموسم.'],['الأثر الموثّق','تقرير موسم وقصص نجاح تُبنى عليها حملة الموسم القادم وتجديد العقد.'],['الاستدامة المالية','أن يغطي منتدى القرآن تكاليف النادي ومصروفاته ويحقق فائضاً لتطويره.']])
+  +'<div style="height:16px"></div>'+grid(['الفئة','من هم','رسالتنا لهم'],[['المستفيدون والمجتمع (B2C)','النادي 13–18 سنة · المنتدى 13–35 سنة · وذووهم والمجتمع المحيط','بيئة آمنة وممتعة تبني شخصية أبنائكم وتزرع بهم القيم'],['الشراكات المؤسسية (B2B)','الشركات، منظمات المجتمع المدني، الجهات الحكومية','شراكة ذات أثر حقيقي ومرئي في حياة الأيتام'],['الشراكات الإقليمية والدولية (B2B)','مؤسسات المجتمع الدولي، المنظمات، الجمعيات الأهلية','مشروع موثّق بالأرقام والقصص يستحق الدعم والاستمرار']])
+  +`<p class="mute" style="margin-top:14px">قاعدة الخطاب: المحتوى العام لا يُكثر من كلمة «الأيتام»؛ نقول «شبابنا» و«أبناؤنا» و«المشاركون».</p>`},
+ {n:'العمل والمؤشرات',h:kv([['المنشورات','25–31 شهرياً (ريلز / بوست / كاروسيل)، لا نشر قبل 1/12/2026'],['حملات ميتا','10–20 حملة شهرياً'],['التصوير','جلستان شهرياً + مواد مصور النادي الدائم'],['الخطط','سنوية + كل 3 أشهر + محتوى شهرية'],['التقارير','أسبوعية وشهرية، ومراجعة ربعية مع الإدارة']])
+  +'<div style="height:16px"></div>'+grid(['المؤشر','موعد الحسم','المستهدف'],[['التسجيلات المسبقة في النادي','14/6/2027','<i class="tbd">يُحدَّد</i> من 72'],['التسجيل في دورات المنتدى','لكل دورة','<i class="tbd">يُحدَّد</i> من 60'],['تغطية المنتدى لتكاليف النادي والفائض','7/11/2027','<i class="tbd">يُحدَّد</i>'],['الداعمون والشركاء الجدد','15/9/2027','<i class="tbd">يُحدَّد</i>']])}
+];
+$('itabs').innerHTML=I.map((x,k)=>`<button class="tab" role="tab" id="it${k}" aria-selected="${k===0}">${x.n}</button>`).join('');
+const itab=k=>{I.forEach((_,j)=>$('it'+j).setAttribute('aria-selected',j===k));$('ibody').innerHTML=I[k].h};
+$('itabs').addEventListener('click',e=>{const b=e.target.closest('.tab');if(b)itab(+b.id.slice(2))});
+itab(0);
+
+// calendar
+$('legend').innerHTML=P.map((p,i)=>`<a class="chip" href="#p${i+1}" style="--c:${p.c}"><i></i><span>${p.n}</span> <small>${dm(p.s)} – ${dm(p.e)}</small></a>`).join('');
 $('year').innerHTML=range('2026-11-01','2027-11-30').map(([y,m])=>month(y,m,(d,n)=>{
  const i=pOf(d);const cls=(MS[d]?' ms':'')+(d===today?' now':'');
  if(i<0)return `<div class="d${cls}">${n}</div>`;
- const p=P[i];return `<button class="d${cls}" data-p="${i}" style="--c:${p.c};--on:${p.on}" title="${tip(d,p.n)}" aria-label="${tip(d,p.n)}">${n}</button>`})).join('');
+ const p=P[i];return `<button class="d${cls}" data-p="${i}" style="--c:${p.c}" title="${tip(d,p.n)}" aria-label="${tip(d,p.n)}">${n}</button>`})).join('');
 $('year').addEventListener('click',e=>{const b=e.target.closest('button.d');if(b)location.hash='p'+(+b.dataset.p+1)});
-$('keys').innerHTML=`<span><span class="ring"></span>محطة: ${Object.entries(MS).map(([d,n])=>`<b>${n}</b> ${dm(d)}`).join(' · ')}</span><span>النقطة تحت الرقم = اليوم</span>`;
+$('keys').innerHTML=`<span><span class="ring"></span>${Object.entries(MS).map(([d,n])=>`<b>${n}</b> ${dm(d)}`).join(' · ')}</span><span>النقطة تحت الرقم = اليوم</span>`;
 
 // period page
 let cur=-1;
 const showPeriod=i=>{
- cur=i;const p=P[i];document.documentElement.style.setProperty('--c',p.c);
+ cur=i;const p=P[i];
  $('phead').style.setProperty('--c',p.c);
- $('phead').innerHTML=`<div class="n">${String(i+1).padStart(2,'0')}</div><h2>${p.n}</h2><div class="meta">${dm(p.s)}/${p.s.slice(0,4)} – ${dm(p.e)}/${p.e.slice(0,4)} · ${ndays(p.s,p.e)} يوماً · ${p.ph.length} مراحل${p.note?' · '+p.note:''}</div><p class="goal">${p.goal}</p>`;
- $('phlegend').innerHTML=p.ph.map((x,j)=>`<button class="chip" data-j="${j}" aria-pressed="false" style="--c:${x.c};--on:${x.on}"><i></i>${x.n} <small>${dm(x.s)} – ${dm(x.e)} · ${ndays(x.s,x.e)} يوم</small></button>`).join('');
+ $('phead').innerHTML=`<div class="n">${String(i+1).padStart(2,'0')}</div><h2>${p.n}</h2><div class="meta">${dm(p.s)}/${p.s.slice(0,4)} ← ${dm(p.e)}/${p.e.slice(0,4)} · ${ndays(p.s,p.e)} يوماً · ${p.ph.length} مراحل${p.note?' · '+p.note:''}</div><p class="goal">${p.goal}</p>`;
+ $('phlegend').innerHTML=p.ph.map((x,j)=>`<button class="phc" data-j="${j}" aria-pressed="false" style="--c:${x.c}"><i></i>${x.n} <small>${dm(x.s)} – ${dm(x.e)} · ${ndays(x.s,x.e)} يوم</small></button>`).join('');
  const phOf=d=>p.ph.findIndex(x=>d>=x.s&&d<=x.e);
  $('pcal').innerHTML=range(p.s,p.e).map(([y,m])=>month(y,m,(d,n)=>{
   const j=phOf(d);const cls=(MS[d]?' ms':'')+(d===today?' now':'');
   if(j<0)return `<div class="d${cls}">${n}</div>`;
   const x=p.ph[j];return `<button class="d full${cls}" data-j="${j}" style="--c:${x.c};--on:${x.on}" title="${tip(d,x.n)}" aria-label="${tip(d,x.n)}">${n}</button>`})).join('');
- $('pcards').innerHTML=(p.todo?`<article class="card" style="--c:var(--ink)"><h3>قائمة مهام التأسيس</h3><ul class="todo">${p.todo.map(t=>`<li>${t}</li>`).join('')}</ul><dl><dt>المؤشرات الرئيسية للنجاح</dt><dd><ul class="dots">${p.kpi.map(k=>`<li>${k}</li>`).join('')}</ul></dd></dl></article>`:'')+p.ph.map((x,j)=>`<article class="card" id="c${j}" style="--c:${x.c}"><div class="dt">${dm(x.s)} – ${dm(x.e)} · ${ndays(x.s,x.e)} يوم</div><h3>${x.n}</h3>${x.list?`<ul class="dots">${x.list.map(l=>`<li>${l}</li>`).join('')}</ul>`:`<dl><dt>الأهداف</dt><dd>${x.g}</dd><dt>الرسالة</dt><dd class="msg">${x.m}</dd>${x.ct?`<dt>أنواع المحتوى</dt><dd>${x.ct}</dd>`:''}<dt>المحاور والحملات</dt><dd><ul class="ax">${x.ax.map(a=>`<li>${a}</li>`).join('')}</ul></dd></dl>`}${x.ind?`<dl><dt>المؤشرات</dt><dd>${x.ind}</dd></dl>`:''}</article>`).join('');
+ const todo=p.todo?`<article class="card" style="--c:var(--acc)"><h3>قائمة مهام التأسيس</h3><ul class="todo">${p.todo.map(t=>`<li>${t}</li>`).join('')}</ul><dl><dt>المؤشرات الرئيسية للنجاح</dt><dd><ul class="dots">${p.kpi.map(k=>`<li>${k}</li>`).join('')}</ul></dd></dl></article>`:'';
+ $('pcards').innerHTML=todo+p.ph.map((x,j)=>`<article class="card" id="c${j}" style="--c:${x.c}"><div class="dt">${dm(x.s)} – ${dm(x.e)} · ${ndays(x.s,x.e)} يوم</div><h3>${x.n}</h3>${x.list?`<ul class="dots">${x.list.map(l=>`<li>${l}</li>`).join('')}</ul>`:`<dl><dt>الأهداف</dt><dd>${x.g}</dd><dt>الرسالة</dt><dd class="msg">${x.m}</dd>${x.ct?`<dt>أنواع المحتوى</dt><dd>${x.ct}</dd>`:''}<dt>المحاور والحملات</dt><dd><ul class="ax">${x.ax.map(a=>`<li>${a}</li>`).join('')}</ul></dd></dl>`}${x.ind?`<dl><dt>المؤشرات</dt><dd>${x.ind}</dd></dl>`:''}</article>`).join('');
 };
 const pick=j=>{
  const on=$('phlegend').querySelector(`[data-j="${j}"]`).getAttribute('aria-pressed')!=='true';
- $('phlegend').querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-pressed',on&&+c.dataset.j===j));
+ $('phlegend').querySelectorAll('.phc').forEach(c=>c.setAttribute('aria-pressed',on&&+c.dataset.j===j));
  $('pcal').querySelectorAll('button.d').forEach(b=>b.classList.toggle('dim',on&&+b.dataset.j!==j));
- $('pcards').querySelectorAll('.card').forEach(c=>c.classList.toggle('hi',on&&c.id==='c'+j));
+ $('pcards').querySelectorAll('.card[id]').forEach(c=>c.classList.toggle('hi',on&&c.id==='c'+j));
  if(on)$('c'+j).scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth',block:'nearest'});
 };
-$('phlegend').addEventListener('click',e=>{const b=e.target.closest('.chip');if(b)pick(+b.dataset.j)});
+$('phlegend').addEventListener('click',e=>{const b=e.target.closest('.phc');if(b)pick(+b.dataset.j)});
 $('pcal').addEventListener('click',e=>{const b=e.target.closest('button.d');if(b)pick(+b.dataset.j)});
-const home=()=>{location.hash=''};
-$('back').onclick=home;$('back2').onclick=home;
+$('back').onclick=()=>{location.hash=''};
 
-// info
-$('goals').innerHTML=[['الثقة والحضور','بناء جمهور يعرف جمعية الشام للأيتام وقيمها قبل الإعلان.'],['الفضول ثم الاهتمام','تحويل التشويق إلى اهتمام فعلي بالإعلان.'],['ملء المقاعد','تسجيلات مسبقة قبل 14/6 مقابل 72 مقعداً، وقائمة انتظار.'],['الداعمون والشركاء','استقطاب داعمين وشركاء جدد للموسم.'],['الأثر الموثّق','تقرير موسم وقصص نجاح تُبنى عليها حملة الموسم القادم وتجديد العقد.'],['الاستدامة المالية','أن يغطي منتدى القرآن تكاليف النادي ومصروفاته ويحقق فائضاً لتطويره.']].map((g,i)=>`<div class="box"><h3>${i+1}. ${g[0]}</h3><p class="mute">${g[1]}</p></div>`).join('');
-$('aud').innerHTML=[['المستفيدون والمجتمع (B2C)','النادي 13–18 سنة · المنتدى 13–35 سنة · وذووهم والمجتمع المحيط','بيئة آمنة وممتعة تبني شخصية أبنائكم وتزرع بهم القيم'],['الشراكات المؤسسية (B2B)','الشركات، منظمات المجتمع المدني، الجهات الحكومية','شراكة ذات أثر حقيقي ومرئي في حياة الأيتام'],['الشراكات الإقليمية والدولية (B2B)','مؤسسات المجتمع الدولي، المنظمات، الجمعيات الأهلية','مشروع موثّق بالأرقام والقصص يستحق الدعم والاستمرار']].map(a=>`<div class="box"><h3>${a[0]}</h3><p class="mute">${a[1]}</p><p class="msg" style="--c:#7444f0;margin-top:10px">${a[2]}</p></div>`).join('');
-$('kpi').innerHTML=[['التسجيلات المسبقة في النادي','14/6/2027',T+' من 72'],['التسجيل في دورات المنتدى','لكل دورة',T+' من 60'],['تغطية المنتدى لتكاليف النادي والفائض','7/11/2027',T],['الداعمون والشركاء الجدد','15/9/2027',T]].map(r=>`<tr><td>${r[0]}</td><td style="white-space:nowrap">${r[1]}</td><td>${r[2]}</td></tr>`).join('');
-$('open').innerHTML=['الأرقام المستهدفة لكل مؤشر (التسجيلات، الداعمون، التغطية المالية)','شروط التسجيل في النادي','المنصات المعتمدة غير فيسبوك وإنستغرام','رفع ميزانية ميتا في أبريل–يونيو ومواسم تسجيل المنتدى','منتدى القرآن: موعد أول دورة، مكان نشر محتواه وعدد منشوراته','ضوابط الخصوصية في تصوير الأيتام ونشر قصصهم','الشركاء والداعمون الحاليون المسموح ذكرهم','موعد حفل الختام إن وُجد'].map(x=>`<li>${x}</li>`).join('');
-
-// routing
 const route=()=>{
- const h=location.hash;const m=/^#p([1-6])$/.exec(h);
- $('home').hidden=!!m||h==='#info';$('period').hidden=!m;$('info').hidden=h!=='#info';
+ const m=/^#p([1-6])$/.exec(location.hash);
+ $('home').hidden=!!m;$('period').hidden=!m;
  if(m){const i=+m[1]-1;if(i!==cur)showPeriod(i)}
  scrollTo(0,0);
 };
 addEventListener('hashchange',route);route();
 }
+
 </script>
 </body>
 </html>
