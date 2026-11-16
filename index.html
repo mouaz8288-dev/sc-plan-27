@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>خطة النادي الصيفي</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* VOICE  calm working calendar for the club team
+   IDEA   a wall/Apple year calendar where every day is tinted by the period it belongs to
+   PICTURE twelve-plus mini months; a period page shows only its months, tinted by phase
+   COLOUR light ground, soft ink; one colour per period taken from the club's rainbow line
+   TYPE   IBM Plex Sans Arabic 300/400/500, never heavy
+   LAYOUT title + legend on top, month grid fills the page; period page: header, phase chips, its months, phase cards */
+:root{color-scheme:light dark;--bg:light-dark(#f7f7f5,#131316);--card:light-dark(#ffffff,#1d1d22);--soft:light-dark(#efefec,#25252b);--ink:light-dark(#1f1f22,#ececf0);--mute:light-dark(#6b6b72,#a3a3ad);--line:light-dark(#e3e3df,#33333a);--pur:light-dark(#7444f0,#a284ff)}
+:root[data-theme=light]{color-scheme:light}
+:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.7 "IBM Plex Sans Arabic",Tahoma,sans-serif;overflow-x:clip}
+.wrap{max-width:1240px;margin-inline:auto;padding:clamp(20px,3.5vw,44px) max(4vw,16px)}
+.rain{height:4px;width:110px;border-radius:4px;background:linear-gradient(to left,#7444f0,#e0453c,#f39a25,#36b26a,#2f80d1)}
+h1{font-weight:500;font-size:clamp(26px,3.6vw,38px);line-height:1.2;margin:14px 0 6px;letter-spacing:-.01em;text-wrap:balance}
+h2{font-weight:500;font-size:clamp(22px,3vw,30px);line-height:1.25;margin:0}
+h3{font-weight:500;font-size:17px;margin:0 0 4px}
+p{margin:0}
+.mute{color:var(--mute)}
+.top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:16px 32px;margin-bottom:22px}
+.lnk{color:var(--pur);text-decoration:none;border-bottom:1px solid currentColor}
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 26px}
+.chip{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:15px;border-radius:999px;padding:8px 14px 8px 16px;min-height:44px;cursor:pointer;text-decoration:none}
+.chip:hover{border-color:var(--c)}
+.chip i{width:14px;height:14px;border-radius:50%;background:var(--c);flex:0 0 auto}
+.chip small{color:var(--mute);font-size:13px}
+.chip[aria-pressed=true]{background:var(--c);border-color:var(--c);color:var(--on)}
+.chip[aria-pressed=true] small{color:inherit;opacity:.85}
+.chip[aria-pressed=true] i{background:var(--on)}
+.months{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,230px),1fr));gap:22px 26px}
+.mon h3{font-size:16px;margin:0 0 8px;color:var(--ink)}
+.mon h3 span{color:var(--mute);font-weight:400;font-size:14px}
+.dg{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:3px}
+.dh{font-size:12px;color:var(--mute);text-align:center}
+.d{aspect-ratio:1;border:0;border-radius:8px;font:inherit;font-size:13px;display:grid;place-items:center;background:transparent;color:var(--mute);padding:0;position:relative}
+button.d{cursor:pointer;background:color-mix(in srgb,var(--c) 22%,var(--card));color:var(--ink)}
+button.d:hover{background:color-mix(in srgb,var(--c) 45%,var(--card))}
+button.d.full{background:var(--c);color:var(--on)}
+.d.ms{outline:2px solid var(--ink);outline-offset:1px}
+.d.now::after{content:"";position:absolute;bottom:3px;width:4px;height:4px;border-radius:50%;background:currentColor}
+.d.dim{opacity:.25}
+.d:focus-visible,.chip:focus-visible,.back:focus-visible{outline:2px solid var(--pur);outline-offset:2px}
+.keys{display:flex;flex-wrap:wrap;gap:6px 20px;margin-top:26px;font-size:14px;color:var(--mute)}
+.keys b{font-weight:500;color:var(--ink)}
+.ring{display:inline-block;width:14px;height:14px;border-radius:4px;box-shadow:inset 0 0 0 2px var(--ink);vertical-align:-2px;margin-inline-end:6px}
+.back{border:0;background:var(--soft);color:var(--ink);font:inherit;font-size:15px;border-radius:999px;padding:8px 16px;min-height:44px;cursor:pointer}
+.ph-head{border-radius:22px;padding:22px clamp(18px,3vw,30px);background:color-mix(in srgb,var(--c) 14%,var(--card));margin:16px 0 22px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 22px;align-items:center}
+.ph-head .n{font-size:clamp(46px,7vw,72px);line-height:1;color:var(--c);font-weight:300;grid-row:span 3}
+.ph-head .meta{color:var(--mute);font-size:15px}
+.ph-head .goal{grid-column:1/-1;margin-top:10px;font-size:17px;max-width:75ch}
+.cal2{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,230px),1fr));gap:22px 26px;margin:6px 0 30px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:14px}
+.card{background:var(--card);border-radius:18px;padding:18px 20px;border-top:5px solid var(--c);scroll-margin-top:16px}
+.card.hi{box-shadow:0 0 0 2px var(--c)}
+.card .dt{color:var(--mute);font-size:14px;white-space:nowrap}
+.card dl{margin:8px 0 0}
+.card dt{font-size:13px;color:var(--mute);margin-top:10px}
+.card dd{margin:2px 0 0}
+.msg{background:color-mix(in srgb,var(--c) 12%,var(--card));border-radius:10px;padding:6px 12px}
+.ax{list-style:none;padding:0;margin:4px 0 0}
+.ax li{padding:5px 0;border-top:1px solid var(--line)}
+.ax li:first-child{border-top:0}
+.dots{padding-inline-start:18px;margin:6px 0 0}
+.tbd{color:var(--mute);border:1px dashed var(--line);border-radius:6px;padding:0 6px;font-size:13px;font-style:normal;white-space:nowrap}
+.sec{margin-top:38px}
+.sec h2{margin-bottom:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:12px}
+.box{background:var(--card);border-radius:18px;padding:18px 20px}
+.scroll{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{text-align:right;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top;font-weight:400}
+th{color:var(--mute);font-size:13px}
+[hidden]{display:none !important}
+@media(max-width:600px){.ph-head{grid-template-columns:minmax(0,1fr)}.ph-head .n{grid-row:auto}.chip{font-size:14px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+
+<section id="home">
+ <div class="top">
+  <div><div class="rain"></div>
+   <h1>الخطة السنوية للنادي الصيفي الشبابي</h1>
+   <p class="mute">سنة العقد من 8/11/2026 إلى 7/11/2027. اكبس على أي فترة أو أي يوم لتفتح تفاصيلها.</p></div>
+  <a class="lnk" href="#info">الأهداف والجمهور والمؤشرات</a>
+ </div>
+ <div class="legend" id="legend"></div>
+ <div class="months" id="year"></div>
+ <div class="keys" id="keys"></div>
+</section>
+
+<section id="period" hidden>
+ <button class="back" id="back">→ رجوع للسنة</button>
+ <div class="ph-head" id="phead"></div>
+ <div class="legend" id="phlegend" style="margin-top:0"></div>
+ <div class="cal2" id="pcal"></div>
+ <div class="cards" id="pcards"></div>
+</section>
+
+<section id="info" hidden>
+ <button class="back" id="back2">→ رجوع للسنة</button>
+ <div class="sec" style="margin-top:22px"><h2>هدف السنة</h2>
+  <p style="max-width:75ch">أن يصل النادي إلى يوم الانطلاق بمقاعد ممتلئة وجمهور يثق بالجمعية، وأن يخرج من الموسم بأثر موثّق يفتح الطريق للموسم القادم، وأن يصبح منتدى القرآن (ربيع القلوب) المشروع الذي يموّل النادي: يغطي تكاليفه ومصروفاته ويحقق فائضاً يُوجَّه لتطويره.</p>
+  <div class="grid" id="goals" style="margin-top:16px"></div></div>
+ <div class="sec"><h2>الجمهور المستهدف</h2><div class="grid" id="aud"></div>
+  <p class="mute" style="margin-top:12px">قاعدة الخطاب: النادي للأيتام، لكن المحتوى العام لا يُكثر من كلمة «الأيتام»؛ نقول «شبابنا» و«أبناؤنا» و«المشاركون». الكلمة تظهر أساساً في الخطاب الموجّه للشركاء والداعمين.</p></div>
+ <div class="sec"><h2>منتدى القرآن · ربيع القلوب</h2>
+  <div class="grid"><div class="box"><p>المنتج الأساسي الذي يموّل النادي: دورة تحفيظ قرآن مبيت لخمسة أسابيع لـ 60 طالباً، بقيمة 800–900$ للطالب. مشروع منفصل بهوية خاصة، غير تابع لجمعية الشام للأيتام.</p></div>
+  <div class="box"><p>تحفيظ مع أحكام التلاوة والتجويد، مناهج قيمية ودورات لتحسين الذاكرة، إدارة الوقت، سباحة ورماية وركوب خيل ورياضة، وبرنامج زمني فيه عبادات ودروس. للأسر المقتدرة، الفئة 13–35 سنة.</p></div></div></div>
+ <div class="sec"><h2>النادي والجمعية</h2>
+  <div class="grid"><div class="box"><h3>جمعية الشام للأيتام</h3><p class="mute">جمعية اجتماعية خيرية ليست تابعة لأي حزب أو جماعة، ترعى الأيتام السوريين. قيمها: التكامل، الإتقان، الالتزام، الرحمة، التميز.</p></div>
+  <div class="box"><h3>النادي الصيفي الشبابي · 72 طالباً</h3><p class="mute">النشابية، الغوطة. افتُتح 30/7/2026. أنشطة ثقافية وتربوية وترفيهية، مخيمات أسبوعية، ورشات ومحاضرات. الموسم الصيفي 15/6 – 15/9/2027.</p></div></div></div>
+ <div class="sec"><h2>حجم العمل والمؤشرات</h2>
+  <div class="grid">
+   <div class="box"><h3>كل شهر</h3><ul class="dots"><li>25–31 منشوراً (ريلز / بوست / كاروسيل)، لا نشر قبل 1/12/2026</li><li>10–20 حملة ميتا، ميزانية نحو 100$ شهرياً</li><li>جلستا تصوير يُصوَّر فيهما محتوى الشهر كاملاً</li><li>تقارير أسبوعية وشهرية ومراجعة ربعية</li></ul></div>
+   <div class="box"><h3>المؤشرات الرئيسية</h3><div class="scroll"><table><tbody id="kpi"></tbody></table></div></div>
+  </div></div>
+ <div class="sec"><h2>نقاط مفتوحة مع الإدارة</h2><div class="box"><ul class="dots" id="open"></ul></div></div>
+</section>
+
+</main>
+<script>
+{
+const T='<i class="tbd">يُحدَّد</i>';
+const P=[
+{n:'التأسيس',c:'#8a8f98',s:'2026-11-08',e:'2026-11-30',note:'بدون نشر',goal:'أن نصل إلى 1/12 ولدينا أهداف متفق عليها، وخطط جاهزة، وبنك محتوى يغطي شهراً كاملاً من النشر.',ph:[
+ {n:'الاجتماعات والأهداف',s:'2026-11-08',e:'2026-11-12',list:['اجتماعات الانطلاق مع الإدارة','أهداف كل فترة ومرحلة','تجهيز الحسابات وحساب ميتا للأعمال']},
+ {n:'الخطط والهيكلة',s:'2026-11-13',e:'2026-11-17',list:['هذه الخطة السنوية','الخطة الربعية الأولى','هيكلة أنواع المحتوى والهوية (من ضمنه البرومو التعريفي الأول)','خطة محتوى 1/12 – 31/12','هيكلة منتج منتدى القرآن (ربيع القلوب)','مراجعة أهداف فترتي ما قبل الإعلان والإعلان']},
+ {n:'التصوير والهوية',s:'2026-11-18',e:'2026-11-30',list:['تصوير محتوى الشهر التالي والبرومو التعريفي','تعريف مصور النادي بمتطلبات المحتوى','خطة الشهر جاهزة للنشر: سكربتات، تصوير، إخراج، تصميم','إعادة تموضع هوية النادي البصرية دون تغيير اللوغو','هوية بصرية ولوغو لمنتدى القرآن'],ind:'اعتماد الخطة السنوية، ومحتوى الشهر الأول جاهز قبل 1/12/2026.'}]},
+{n:'ما قبل الإعلان',c:'#7444f0',s:'2026-12-01',e:'2027-03-31',goal:'جمهور يثق بالجمعية ويعرف قيمها، ثم يترقّب شيئاً قادماً. التركيز على الجمعية لا على النادي، ولا تُكشف تفاصيل النادي قبل 1/4.',ph:[
+ {n:'بناء الحضور والثقة',s:'2026-12-01',e:'2026-12-31',g:'تعريف الجمهور بالجمعية وقصتها، إطلاق هوية بصرية ثابتة للحسابات، بناء قاعدة متابعين أولى.',m:'نحن بيت لشبابنا، وهذا ما نصنعه معهم كل يوم.',ct:'ريلز تعريفية، كاروسيلز «من نحن»، قصص أثر قصيرة، لقطات من يوميات الجمعية.',ax:['حملة «من هنا نبدأ» — التعريف بالجمعية ورؤيتها','محور «وجوه البيت» — الفريق والمربّون والمتطوعون','محور «يوم في الجمعية» — خلف الكواليس','محور «أثر بالأرقام» — ما أنجزته الجمعية حتى اليوم']},
+ {n:'القيم والأثر',s:'2027-01-01',e:'2027-02-15',g:'تعميق الثقة عبر محتوى قيمي وتربوي، رفع الحفظ والمشاركة، جذب أول تفاعل من الداعمين.',m:'نربّي بالقيم، والأثر يبقى.',ct:'كاروسيل تربوي للأهالي، ريلز قصص أثر، اقتباسات قيمية، شهادات مربّين.',ax:['حملة «قيمة الأسبوع» — قيمة واحدة كل أسبوع بمواقف حقيقية','محور «رسائل للأهالي» — نصائح تربوية عملية','محور «أثرٌ لا يُنسى» — قصص تغيير حقيقية','حملة «شريك الأثر» — شكر الداعمين ودعوة ناعمة للدعم']},
+ {n:'التشويق',s:'2027-02-16',e:'2027-03-31',g:'إثارة فضول الجمهور تجاه شيء قادم دون كشفه، رفع التوقع لموعد 1/4، جمع جمهور مهتم للاستهداف اللاحق.',m:'شيء جديد يُصنع لشبابنا… قريباً.',ct:'لقطات غامضة، ألغاز بصرية، أسئلة للجمهور، عدّ تنازلي أسبوعي بدون تفاصيل.',ax:['حملة «شيء يُبنى» — مشاهد مجتزأة بدون سياق','محور «احزر» — ألغاز وأسئلة تفاعلية','محور «صيفٌ مختلف» — تلميح للموسم دون ذكر النادي','حملة «العدّ بدأ» — آخر أسبوعين قبل 1/4']}]},
+{n:'الإعلان',c:'#e0453c',s:'2027-04-01',e:'2027-04-30',goal:'كشف النادي بالكامل وتحويل الفضول إلى اهتمام فعلي. أعلى شهر في الإنفاق الإعلاني قبل الانطلاق.',ph:[
+ {n:'الإعلان الرسمي',s:'2027-04-01',e:'2027-04-10',g:'إطلاق البرومو الرسمي، وصول الإعلان لأكبر شريحة في دمشق وريفها، ربط النادي بالجمعية وقيمها.',m:'هذا هو النادي الصيفي الشبابي، صيفٌ يُصنع لشبابنا.',ax:['حملة «وأخيراً… النادي الصيفي الشبابي» — البرومو الرسمي','محور «لماذا النادي؟» — الفكرة والرؤية','محور «من الجمعية إلى النادي» — ربط المشروع بالقيم']},
+ {n:'البرامج والمرافق',s:'2027-04-11',e:'2027-04-20',g:'شرح الأنشطة والمخيمات والمرافق بالتفصيل، الإجابة عن أسئلة الأهالي مسبقاً.',m:'كل يوم في النادي تجربة مختلفة.',ax:['سلسلة «جولة في النادي» — المرافق مرفقاً مرفقاً','محور «برامجنا» — الأنشطة والمخيمات','محور «أسئلة الأهالي» — الأمان والمواعيد والفئات العمرية']},
+ {n:'الدعوة للمشاركة',s:'2027-04-21',e:'2027-04-30',g:'فتح باب الاهتمام للأهالي والداعمين والشركاء، جمع بيانات المهتمين تمهيداً للتسجيل المسبق.',m:'لكلّ مكانه في النادي.',ax:['حملة «كن جزءاً من الصيف» — دعوة الأهالي والشباب','حملة «ادعم صيفاً» — الداعمون وكفالة مشاركين','محور «شركاء الصيف» — دعوة المؤسسات للشراكة'],ind:'المهتمون المسجّلون '+T+'، طلبات الدعم والشراكة '+T}]},
+{n:'ما قبل الإطلاق',c:'#f39a25',s:'2027-05-01',e:'2027-06-14',goal:'ملء مقاعد النادي ورفع التوقع حتى يوم الافتتاح. الحملات هنا تحويلية بالدرجة الأولى.',ph:[
+ {n:'التسجيل المسبق',s:'2027-05-01',e:'2027-05-20',g:'فتح التسجيل المسبق، فتح قائمة انتظار، إعادة استهداف كل من تفاعل منذ التشويق.',m:'المقاعد محدودة، سجّل الآن.',ax:['حملة «احجز مكانك» — الحملة التحويلية الرئيسية','محور «كيف تسجّل؟» — خطوات وشروط ومواعيد','محور «المقاعد تمتلئ» — تحديث أعداد المسجّلين'],ind:'التسجيلات '+T+'، تكلفة التسجيل الواحد '+T+'، قائمة الانتظار '+T},
+ {n:'بناء التوقع',s:'2027-05-21',e:'2027-06-05',g:'إبقاء المسجّلين متحمسين، إظهار جديّة التحضير، إبراز الشركاء والداعمين.',m:'كل شيء يُجهَّز لكم.',ax:['سلسلة «خلف الكواليس» — تجهيز المرافق والفريق','محور «قالوا عن النادي» — آراء أهالٍ ومربّين','محور «شركاؤنا» — التعريف بالشركاء والداعمين'],ind:'تسجيلات إضافية '+T},
+ {n:'العد التنازلي',s:'2027-06-06',e:'2027-06-14',g:'رفع التوقع إلى ذروته، تذكير المسجّلين بالموعد والتجهيزات، تحضير تغطية يوم الافتتاح.',m:'بقيت [عدد] أيام.',ax:['حملة «9 أيام للصيف» — منشور يومي يكشف جانباً من النادي','محور «جاهزين؟» — تذكير بالتجهيزات والمواعيد'],ind:'نسبة تأكيد الحضور '+T}]},
+{n:'ما بعد الإطلاق',c:'#2fa866',s:'2027-06-15',e:'2027-09-15',note:'الموسم الصيفي',goal:'توثيق التجربة وإبراز الأثر، وتحويل المهتمين إلى مشاركين وداعمين دائمين. تغطي الموسم الصيفي كاملاً.',ph:[
+ {n:'الإطلاق والتغطية',s:'2027-06-15',e:'2027-06-30',g:'تغطية الافتتاح بالكامل وبث مباشر، إشراك الإعلام والشركاء، تثبيت إيقاع النشر اليومي.',m:'انطلق الصيف.',ax:['حملة «انطلقنا» — تغطية يوم الافتتاح والبث المباشر','محور «الأسبوع الأول» — الانطباعات الأولى','محور «شكراً شركاءنا» — الإعلام والشركاء'],ind:'التغطيات الإعلامية '+T},
+ {n:'الاستدامة والتفاعل',s:'2027-07-01',e:'2027-07-25',g:'نشر يوميات النادي والمخيمات، إبراز قصص المشاركين، إبقاء الأهالي والداعمين متصلين بما يحدث.',m:'هكذا يبدو صيف شبابنا.',ax:['سلسلة «يوميات النادي» — محتوى يومي من الميدان','محور «من المخيم» — تغطية المخيمات','محور «بطل الأسبوع» — قصة مشارك كل أسبوع']},
+ {n:'السنوية الأولى للنادي',s:'2027-07-26',e:'2027-07-30',g:'الاحتفاء بمرور سنة على افتتاح النادي (30/7/2026)، عرض إنجازات السنة وأبرز لقطاتها.',m:'سنة من الأثر… والحكاية مستمرة.',ct:'فيديو «سنة في النادي»، كاروسيل إنجازات السنة، أبرز اللقطات، شهادات، عدّ تنازلي ليوم 30/7.',ax:['حملة «سنة أولى» — خمسة أيام تنتهي بيوم السنوية','محور «سنتنا بالأرقام» — إنجازات السنة','محور «أجمل اللقطات» — أبرز لحظات السنة','محور «شكراً لمن كان معنا» — الأهالي والداعمون والشركاء']},
+ {n:'تكملة الموسم',s:'2027-07-31',e:'2027-08-31',g:'العودة ليوميات النادي والمخيمات وقصص المشاركين، والتمهيد لختام الموسم.',m:'هكذا يبدو صيف شبابنا.',ax:['سلسلة «يوميات النادي»','محور «من المخيم»','محور «بطل الأسبوع»']},
+ {n:'الأثر والاستبقاء',s:'2027-09-01',e:'2027-09-15',g:'عرض أرقام الموسم وقصص النجاح والشهادات، تحويل المشاركين والداعمين إلى جمهور دائم.',m:'الصيف ينتهي، والأثر يبقى.',ax:['حملة «صيفنا بالأرقام» — حصيلة الموسم','محور «قالوا بعد الصيف» — شهادات الأهالي والمشاركين','محور «الختام» — تغطية حفل الختام إن وُجد'],ind:'شهادات موثّقة '+T+'، داعمون جدد '+T}]},
+{n:'الاستمرارية',c:'#2f80d1',s:'2027-09-16',e:'2027-11-07',goal:'الحفاظ على حضور النادي بعد الموسم، وتوثيق أثره، وبناء الجسر للموسم القادم وتجديد العقد.',ph:[
+ {n:'توثيق الأثر',s:'2027-09-16',e:'2027-09-30',g:'إصدار التقرير الموسمي، فيديو ملخّص للموسم، تقديم الأثر للداعمين بشكل يشجّع استمرارهم.',m:'هذا ما صنعناه معاً.',ax:['حملة «حكاية صيف» — الفيديو الملخّص والتقرير الموسمي','محور «أين هم الآن؟» — ماذا تغيّر في المشاركين','محور «بفضلكم» — شكر الداعمين بالأرقام']},
+ {n:'المحتوى المستمر',s:'2027-10-01',e:'2027-10-20',g:'إبقاء الحسابات حيّة عبر البرامج المستمرة، مع تكثيف محتوى منتدى القرآن في هذا الشهر.',m:'الأثر لا يتوقف بانتهاء الصيف.',ax:['محور «معهم طوال العام» — البرامج المستمرة','محور «العودة إلى المدارس» — محتوى تربوي لبداية العام الدراسي','محور «ربيع القلوب» — منتدى القرآن']},
+ {n:'التحضير للموسم القادم',s:'2027-10-21',e:'2027-11-07',g:'مراجعة نتائج السنة مع الإدارة، إعداد خطة الموسم الجديد، تجديد العقد قبل 7/11.',m:'نستعد لصيفٍ أكبر.',ax:['محور «ماذا تعلّمنا» — دروس الموسم الأول','محور «رأيك يصنع الموسم القادم» — استبيانات للأهالي والمشاركين','محور «موسم جديد يقترب» — تمهيد للدورة التالية'],ind:'ردود الاستبيان '+T+'، اعتماد خطة الموسم الجديد وتجديد العقد.'}]}
+];
+const MS={'2026-12-01':'أول منشور','2027-04-01':'الإعلان','2027-06-15':'الانطلاق','2027-07-30':'السنوية الأولى','2027-09-15':'نهاية الموسم'};
+const MN=['كانون الثاني','شباط','آذار','نيسان','أيار','حزيران','تموز','آب','أيلول','تشرين الأول','تشرين الثاني','كانون الأول'];
+const WD=['س','ح','ن','ث','ر','خ','ج'];
+const $=id=>document.getElementById(id);
+const iso=(y,m,d)=>`${y}-${String(m).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+const dm=s=>+s.slice(8)+'/'+(+s.slice(5,7));
+const ndays=(a,b)=>Math.round((Date.parse(b)-Date.parse(a))/864e5)+1;
+const today=new Date().toISOString().slice(0,10);
+const pOf=d=>P.findIndex(p=>d>=p.s&&d<=p.e);
+// phase shades: from deep to light of the period colour
+const shade=(c,j,n)=>{const t=n<2?0:j/(n-1);const mix=Math.round(-30+t*90);return mix<0?`color-mix(in oklab,${c},black ${-mix}%)`:`color-mix(in oklab,${c},white ${mix}%)`};
+const onCol=(j,n)=>(n<2||j/(n-1)<.55)?'#fff':'#1f1f22';
+P.forEach(p=>{p.on='#fff';p.ph.forEach((x,j)=>{x.c=shade(p.c,j,p.ph.length);x.on=onCol(j,p.ph.length)})});
+
+const month=(y,m,cell)=>{
+ const first=new Date(Date.UTC(y,m-1,1)).getUTCDay();const lead=(first+1)%7;const len=new Date(Date.UTC(y,m,0)).getUTCDate();
+ let h=WD.map(w=>`<div class="dh">${w}</div>`).join('')+'<div></div>'.repeat(lead);
+ for(let d=1;d<=len;d++)h+=cell(iso(y,m,d),d);
+ return `<div class="mon"><h3>${MN[m-1]} <span>${y}</span></h3><div class="dg">${h}</div></div>`};
+const range=(s,e)=>{const out=[];let y=+s.slice(0,4),m=+s.slice(5,7);const ey=+e.slice(0,4),em=+e.slice(5,7);while(y<ey||(y===ey&&m<=em)){out.push([y,m]);m++;if(m>12){m=1;y++}}return out};
+const tip=(d,extra)=>`${dm(d)}/${d.slice(0,4)}${extra?' · '+extra:''}${MS[d]?' · '+MS[d]:''}`;
+
+// home
+$('legend').innerHTML=P.map((p,i)=>`<a class="chip" href="#p${i+1}" style="--c:${p.c};--on:${p.on}"><i></i>${p.n} <small>${dm(p.s)} – ${dm(p.e)}</small></a>`).join('');
+$('year').innerHTML=range('2026-11-01','2027-11-30').map(([y,m])=>month(y,m,(d,n)=>{
+ const i=pOf(d);const cls=(MS[d]?' ms':'')+(d===today?' now':'');
+ if(i<0)return `<div class="d${cls}">${n}</div>`;
+ const p=P[i];return `<button class="d${cls}" data-p="${i}" style="--c:${p.c};--on:${p.on}" title="${tip(d,p.n)}" aria-label="${tip(d,p.n)}">${n}</button>`})).join('');
+$('year').addEventListener('click',e=>{const b=e.target.closest('button.d');if(b)location.hash='p'+(+b.dataset.p+1)});
+$('keys').innerHTML=`<span><span class="ring"></span>محطة: ${Object.entries(MS).map(([d,n])=>`<b>${n}</b> ${dm(d)}`).join(' · ')}</span><span>النقطة تحت الرقم = اليوم</span>`;
+
+// period page
+let cur=-1;
+const showPeriod=i=>{
+ cur=i;const p=P[i];document.documentElement.style.setProperty('--c',p.c);
+ $('phead').style.setProperty('--c',p.c);
+ $('phead').innerHTML=`<div class="n">${String(i+1).padStart(2,'0')}</div><h2>${p.n}</h2><div class="meta">${dm(p.s)}/${p.s.slice(0,4)} – ${dm(p.e)}/${p.e.slice(0,4)} · ${ndays(p.s,p.e)} يوماً · ${p.ph.length} مراحل${p.note?' · '+p.note:''}</div><p class="goal">${p.goal}</p>`;
+ $('phlegend').innerHTML=p.ph.map((x,j)=>`<button class="chip" data-j="${j}" aria-pressed="false" style="--c:${x.c};--on:${x.on}"><i></i>${x.n} <small>${dm(x.s)} – ${dm(x.e)} · ${ndays(x.s,x.e)} يوم</small></button>`).join('');
+ const phOf=d=>p.ph.findIndex(x=>d>=x.s&&d<=x.e);
+ $('pcal').innerHTML=range(p.s,p.e).map(([y,m])=>month(y,m,(d,n)=>{
+  const j=phOf(d);const cls=(MS[d]?' ms':'')+(d===today?' now':'');
+  if(j<0)return `<div class="d${cls}">${n}</div>`;
+  const x=p.ph[j];return `<button class="d full${cls}" data-j="${j}" style="--c:${x.c};--on:${x.on}" title="${tip(d,x.n)}" aria-label="${tip(d,x.n)}">${n}</button>`})).join('');
+ $('pcards').innerHTML=p.ph.map((x,j)=>`<article class="card" id="c${j}" style="--c:${x.c}"><div class="dt">${dm(x.s)} – ${dm(x.e)} · ${ndays(x.s,x.e)} يوم</div><h3>${x.n}</h3>${x.list?`<ul class="dots">${x.list.map(l=>`<li>${l}</li>`).join('')}</ul>`:`<dl><dt>الأهداف</dt><dd>${x.g}</dd><dt>الرسالة</dt><dd class="msg">${x.m}</dd>${x.ct?`<dt>أنواع المحتوى</dt><dd>${x.ct}</dd>`:''}<dt>المحاور والحملات</dt><dd><ul class="ax">${x.ax.map(a=>`<li>${a}</li>`).join('')}</ul></dd></dl>`}${x.ind?`<dl><dt>المؤشرات</dt><dd>${x.ind}</dd></dl>`:''}</article>`).join('');
+};
+const pick=j=>{
+ const on=$('phlegend').querySelector(`[data-j="${j}"]`).getAttribute('aria-pressed')!=='true';
+ $('phlegend').querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-pressed',on&&+c.dataset.j===j));
+ $('pcal').querySelectorAll('button.d').forEach(b=>b.classList.toggle('dim',on&&+b.dataset.j!==j));
+ $('pcards').querySelectorAll('.card').forEach(c=>c.classList.toggle('hi',on&&c.id==='c'+j));
+ if(on)$('c'+j).scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth',block:'nearest'});
+};
+$('phlegend').addEventListener('click',e=>{const b=e.target.closest('.chip');if(b)pick(+b.dataset.j)});
+$('pcal').addEventListener('click',e=>{const b=e.target.closest('button.d');if(b)pick(+b.dataset.j)});
+const home=()=>{location.hash=''};
+$('back').onclick=home;$('back2').onclick=home;
+
+// info
+$('goals').innerHTML=[['الثقة والحضور','بناء جمهور يعرف جمعية الشام للأيتام وقيمها قبل الإعلان.'],['الفضول ثم الاهتمام','تحويل التشويق إلى اهتمام فعلي بالإعلان.'],['ملء المقاعد','تسجيلات مسبقة قبل 14/6 مقابل 72 مقعداً، وقائمة انتظار.'],['الداعمون والشركاء','استقطاب داعمين وشركاء جدد للموسم.'],['الأثر الموثّق','تقرير موسم وقصص نجاح تُبنى عليها حملة الموسم القادم وتجديد العقد.'],['الاستدامة المالية','أن يغطي منتدى القرآن تكاليف النادي ومصروفاته ويحقق فائضاً لتطويره.']].map((g,i)=>`<div class="box"><h3>${i+1}. ${g[0]}</h3><p class="mute">${g[1]}</p></div>`).join('');
+$('aud').innerHTML=[['المستفيدون والمجتمع (B2C)','النادي 13–18 سنة · المنتدى 13–35 سنة · وذووهم والمجتمع المحيط','بيئة آمنة وممتعة تبني شخصية أبنائكم وتزرع بهم القيم'],['الشراكات المؤسسية (B2B)','الشركات، منظمات المجتمع المدني، الجهات الحكومية','شراكة ذات أثر حقيقي ومرئي في حياة الأيتام'],['الشراكات الإقليمية والدولية (B2B)','مؤسسات المجتمع الدولي، المنظمات، الجمعيات الأهلية','مشروع موثّق بالأرقام والقصص يستحق الدعم والاستمرار']].map(a=>`<div class="box"><h3>${a[0]}</h3><p class="mute">${a[1]}</p><p class="msg" style="--c:#7444f0;margin-top:10px">${a[2]}</p></div>`).join('');
+$('kpi').innerHTML=[['التسجيلات المسبقة في النادي','14/6/2027',T+' من 72'],['التسجيل في دورات المنتدى','لكل دورة',T+' من 60'],['تغطية المنتدى لتكاليف النادي والفائض','7/11/2027',T],['الداعمون والشركاء الجدد','15/9/2027',T]].map(r=>`<tr><td>${r[0]}</td><td style="white-space:nowrap">${r[1]}</td><td>${r[2]}</td></tr>`).join('');
+$('open').innerHTML=['الأرقام المستهدفة لكل مؤشر (التسجيلات، الداعمون، التغطية المالية)','شروط التسجيل في النادي','المنصات المعتمدة غير فيسبوك وإنستغرام','رفع ميزانية ميتا في أبريل–يونيو ومواسم تسجيل المنتدى','منتدى القرآن: موعد أول دورة، مكان نشر محتواه وعدد منشوراته','ضوابط الخصوصية في تصوير الأيتام ونشر قصصهم','الشركاء والداعمون الحاليون المسموح ذكرهم','موعد حفل الختام إن وُجد'].map(x=>`<li>${x}</li>`).join('');
+
+// routing
+const route=()=>{
+ const h=location.hash;const m=/^#p([1-6])$/.exec(h);
+ $('home').hidden=!!m||h==='#info';$('period').hidden=!m;$('info').hidden=h!=='#info';
+ if(m){const i=+m[1]-1;if(i!==cur)showPeriod(i)}
+ scrollTo(0,0);
+};
+addEventListener('hashchange',route);route();
+}
+</script>
+</body>
+</html>
